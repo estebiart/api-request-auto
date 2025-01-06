@@ -1,0 +1,173 @@
+use std::error::Error;
+use reqwest::Client;
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Country {
+    id: u32,
+    value: String,
+    iso_a2: String,
+    key: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct State {
+    id: u32,
+    value: String,
+    key: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct City {
+    value: String,
+    key: String,
+    state_id: u32,
+}
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+    let client = Client::new();
+
+    // Token de autorización
+    let bearer_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoyMDQxODg1NjExLCJpYXQiOjE3MjY1MjU2MTEsImp0aSI6IjI3NmZiYzU0YTY2NzRmYzZiMjQyOGQ1MWJkZjFmNGUwIiwidXNlcl9pZCI6NH0.kcC87K2Bs-Kp7MoG8PGfdLhRtUDw-4smRaP-qtVccrc";
+
+    // Datos iniciales
+    let country = Country {
+        id: 117,
+        value: "Mexico".to_string(),
+        iso_a2: "Mex".to_string(),
+        key: "MX".to_string(),
+    };
+
+    // Listado de estados y ciudades
+    let states = vec![
+        ("Aguascalientes", vec!["Aguascalientes", "Jesús María", "Calvillo"]),
+        ("Baja California", vec!["Tijuana", "Mexicali", "Ensenada"]),
+        ("Baja California Sur", vec!["La Paz", "Cabo San Lucas", "San José del Cabo"]),
+        ("Campeche", vec!["Campeche", "Ciudad del Carmen", "Champotón"]),
+        ("Chiapas", vec!["Tuxtla Gutiérrez", "San Cristóbal de las Casas", "Tapachula"]),
+        ("Chihuahua", vec!["Chihuahua", "Ciudad Juárez", "Delicias"]),
+        ("Coahuila", vec!["Saltillo", "Torreón", "Monclova"]),
+        ("Colima", vec!["Colima", "Manzanillo", "Tecomán"]),
+        ("Durango", vec!["Durango", "Gómez Palacio", "Lerdo"]),
+        ("Guanajuato", vec!["Guanajuato", "León", "Celaya"]),
+        ("Guerrero", vec!["Chilpancingo", "Acapulco", "Iguala"]),
+        ("Hidalgo", vec!["Pachuca", "Tulancingo", "Tula de Allende"]),
+        ("Jalisco", vec!["Guadalajara", "Puerto Vallarta", "Tepatitlán"]),
+        ("Estado de México", vec!["Toluca", "Ecatepec", "Naucalpan"]),
+        ("Michoacán", vec!["Morelia", "Uruapan", "Zamora"]),
+        ("Morelos", vec!["Cuernavaca", "Jiutepec", "Cuautla"]),
+        ("Nayarit", vec!["Tepic", "Bahía de Banderas", "Compostela"]),
+        ("Nuevo León", vec!["Monterrey", "San Nicolás de los Garza", "Apodaca"]),
+        ("Oaxaca", vec!["Oaxaca de Juárez", "Salina Cruz", "Puerto Escondido"]),
+        ("Puebla", vec!["Puebla", "Tehuacán", "Cholula"]),
+        ("Querétaro", vec!["Querétaro", "San Juan del Río", "El Marqués"]),
+        ("Quintana Roo", vec!["Cancún", "Playa del Carmen", "Chetumal"]),
+        ("San Luis Potosí", vec!["San Luis Potosí", "Soledad de Graciano Sánchez", "Ciudad Valles"]),
+        ("Sinaloa", vec!["Culiacán", "Mazatlán", "Los Mochis"]),
+        ("Sonora", vec!["Hermosillo", "Ciudad Obregón", "Nogales"]),
+        ("Tabasco", vec!["Villahermosa", "Cárdenas", "Comalcalco"]),
+        ("Tamaulipas", vec!["Ciudad Victoria", "Reynosa", "Matamoros"]),
+        ("Tlaxcala", vec!["Tlaxcala", "Apizaco", "Huamantla"]),
+        ("Veracruz", vec!["Xalapa", "Veracruz", "Coatzacoalcos"]),
+        ("Yucatán", vec!["Mérida", "Valladolid", "Tizimín"]),
+        ("Zacatecas", vec!["Zacatecas", "Guadalupe", "Fresnillo"])
+    ];
+    
+
+    let mut state_id_counter = 800;
+
+    for (state_name, cities) in states {
+        // Comprobar si el estado ya existe
+        let check_state_url = format!(
+            "https://locale-geo-data-production.quadi.io/api/state/{}",
+            format!("{}-{}", country.key, &state_name[0..2].to_uppercase())
+        );
+
+        let state_exists = client
+            .get(&check_state_url)
+            .header("Authorization", format!("Bearer {}", bearer_token))
+            .send()
+            .await;
+
+        let mut state_id = None;
+        if let Ok(response) = state_exists {
+            if response.status().is_success() {
+                // El estado ya existe, extraer el `id` del estado
+                let existing_state: State = response.json().await?;
+                state_id = Some(existing_state.id);
+                println!("Estado ya existe: {}", state_name);
+            }
+        }
+
+        // Si el estado no existe, crear uno nuevo
+        if state_id.is_none() {
+            let state = State {
+                id: state_id_counter,
+                value: state_name.to_string(),
+                key: format!("{}-{}", country.key, &state_name[0..2].to_uppercase()),
+            };
+
+            let state_url = "https://locale-geo-data-production.quadi.io/api/state";
+            let state_response = client
+                .post(state_url)
+                .header("Authorization", format!("Bearer {}", bearer_token))
+                .json(&state)
+                .send()
+                .await?;
+
+            if state_response.status().is_success() {
+                println!("Estado creado: {}", state_name);
+                state_id = Some(state.id); // Asignamos el id después de la creación
+            } else {
+                println!(
+                    "Error al crear estado '{}': {} - {:?}",
+                    state_name,
+                    state_response.status(),
+                    state_response.text().await?
+                );
+                continue; // Saltar al siguiente estado si no se pudo crear
+            }
+        }
+
+        // Crear las ciudades solo si el estado fue creado o ya existe
+        if let Some(state_id) = state_id {
+            let cities_payload: Vec<City> = cities
+                .into_iter()
+                .map(|city_name| City {
+                    value: city_name.to_string(),
+                    key: format!(
+                        "{}-{}-{}",
+                        country.key,
+                        &state_name[0..2].to_uppercase(),
+                        &city_name[0..3].to_uppercase()
+                    ),
+                    state_id,
+                })
+                .collect();
+
+            let city_url = "https://locale-geo-data-production.quadi.io/api/city/";
+            let city_response = client
+                .post(city_url)
+                .header("Authorization", format!("Bearer {}", bearer_token))
+                .json(&cities_payload) // Enviamos todas las ciudades en un solo POST
+                .send()
+                .await?;
+
+            if city_response.status().is_success() {
+                println!("Ciudades creadas: {:?}", city_response.text().await?);
+            } else {
+                println!(
+                    "Error al crear ciudades para el estado '{}': {} - {:?}",
+                    state_name,
+                    city_response.status(),
+                    city_response.text().await?
+                );
+            }
+        }
+
+        state_id_counter += 1; // Incrementar el contador de ID para el siguiente estado
+    }
+
+    Ok(())
+}

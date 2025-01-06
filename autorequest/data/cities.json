@@ -1,0 +1,178 @@
+[
+    {
+        "state_id": 831,
+        "cities": [
+            { "name": "Cobán" },
+            { "name": "San Pedro Carchá" },
+            { "name": "Tactic" }
+        ]
+    },
+    {
+        "state_id": 832,
+        "cities": [
+            { "name": "Salamá" },
+            { "name": "San Jerónimo" },
+            { "name": "Purulhá" }
+        ]
+    },
+    {
+        "state_id": 833,
+        "cities": [
+            { "name": "Chimaltenango" },
+            { "name": "San Juan Comalapa" },
+            { "name": "Santa Apolonia" }
+        ]
+    },
+    {
+        "state_id": 834,
+        "cities": [
+            { "name": "Chiquimula" },
+            { "name": "Esquipulas" },
+            { "name": "Jocotán" }
+        ]
+    },
+    {
+        "state_id": 835,
+        "cities": [
+            { "name": "Guastatoya" },
+            { "name": "Morazán" },
+            { "name": "San Agustín Acasaguastlán" }
+        ]
+    },
+    {
+        "state_id": 836,
+        "cities": [
+            { "name": "Escuintla" },
+            { "name": "La Gomera" },
+            { "name": "Palín" }
+        ]
+    },
+    {
+        "state_id": 837,
+        "cities": [
+            { "name": "Ciudad de Guatemala" },
+            { "name": "Mixco" },
+            { "name": "Villa Nueva" }
+        ]
+    },
+    {
+        "state_id": 838,
+        "cities": [
+            { "name": "Huehuetenango" },
+            { "name": "Colotenango" },
+            { "name": "La Democracia" }
+        ]
+    },
+    {
+        "state_id": 839,
+        "cities": [
+            { "name": "Puerto Barrios" },
+            { "name": "Livingston" },
+            { "name": "El Estor" }
+        ]
+    },
+    {
+        "state_id": 840,
+        "cities": [
+            { "name": "Jalapa" },
+            { "name": "San Pedro Pinula" },
+            { "name": "Monjas" }
+        ]
+    },
+    {
+        "state_id": 841,
+        "cities": [
+            { "name": "Jutiapa" },
+            { "name": "Asunción Mita" },
+            { "name": "El Progreso" }
+        ]
+    },
+    {
+        "state_id": 842,
+        "cities": [
+            { "name": "Flores" },
+            { "name": "San Benito" },
+            { "name": "Sayaxché" }
+        ]
+    },
+    {
+        "state_id": 843,
+        "cities": [
+            { "name": "Quetzaltenango" },
+            { "name": "Coatepeque" },
+            { "name": "La Esperanza" }
+        ]
+    },
+    {
+        "state_id": 844,
+        "cities": [
+            { "name": "Santa Cruz del Quiché" },
+            { "name": "Chichicastenango" },
+            { "name": "Joyabaj" }
+        ]
+    },
+    {
+        "state_id": 845,
+        "cities": [
+            { "name": "Retalhuleu" },
+            { "name": "San Martín Zapotitlán" },
+            { "name": "San Felipe" }
+        ]
+    },
+    {
+        "state_id": 846,
+        "cities": [
+            { "name": "Antigua Guatemala" },
+            { "name": "Ciudad Vieja" },
+            { "name": "Jocotenango" }
+        ]
+    },
+    {
+        "state_id": 847,
+        "cities": [
+            { "name": "San Marcos" },
+            { "name": "San Pedro Sacatepéquez" },
+            { "name": "Malacatán" }
+        ]
+    },
+    {
+        "state_id": 848,
+        "cities": [
+            { "name": "Cuilapa" },
+            { "name": "Barberena" },
+            { "name": "Casillas" }
+        ]
+    },
+    {
+        "state_id": 849,
+        "cities": [
+            { "name": "Sololá" },
+            { "name": "Panajachel" },
+            { "name": "San Pedro La Laguna" }
+        ]
+    },
+    {
+        "state_id": 850,
+        "cities": [
+            { "name": "Mazatenango" },
+            { "name": "San Francisco Zapotitlán" },
+            { "name": "San Bernardino" }
+        ]
+    },
+    {
+        "state_id": 851,
+        "cities": [
+            { "name": "Totonicapán" },
+            { "name": "San Andrés Xecul" },
+            { "name": "Momostenango" }
+        ]
+    },
+    {
+        "state_id": 852,
+        "cities": [
+            { "name": "Zacapa" },
+            { "name": "Estanzuela" },
+            { "name": "Teculután" }
+        ]
+    }
+]

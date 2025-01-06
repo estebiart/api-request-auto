@@ -1,0 +1,65 @@
+[
+    {
+      "country": {
+        "id": 69,
+        "value": "Guatemala",
+        "iso_a2": "GT",
+        "key": "GT"
+      },
+      "states": [
+        {
+          "value": "Guatemala",
+          "cities": ["Ciudad de Guatemala", "Mixco", "Villa Nueva"]
+        },
+        {
+          "value": "Alta Verapaz",
+          "cities": ["Cobán", "Santa Cruz Verapaz", "San Pedro Carcha"]
+        },
+        {
+          "value": "Baja Verapaz",
+          "cities": ["Salamá", "Granados", "San Miguel Chicaj"]
+        },
+        {
+          "value": "Chimaltenango",
+          "cities": ["Chimaltenango", "Patzún", "San Martín Jilotepeque"]
+        },
+        {
+          "value": "Escuintla",
+          "cities": ["Escuintla", "Santa Lucia Cotzumalguapa", "La Democracia"]
+        },
+        {
+          "value": "Quetzaltenango",
+          "cities": ["Quetzaltenango", "Coatepeque", "La Esperanza"]
+        },
+        {
+          "value": "Huehuetenango",
+          "cities": ["Huehuetenango", "Chiantla", "Cuilco"]
+        },
+        {
+          "value": "San Marcos",
+          "cities": ["San Marcos", "Tajumulco", "Ayutla"]
+        },
+        {
+          "value": "Totonicapán",
+          "cities": ["Totonicapán", "San Francisco El Alto", "San Andrés Xecul"]
+        },
+        {
+          "value": "Sololá",
+          "cities": ["Sololá", "Panajachel", "San Lucas Tolimán"]
+        },
+        {
+          "value": "Suchitepéquez",
+          "cities": ["Mazatenango", "Cuyotenango", "San Francisco Zapotitlán"]
+        },
+        {
+          "value": "Santa Rosa",
+          "cities": ["Cuilapa", "Pueblo Nuevo Viñas", "San Rafael Las Flores"]
+        },
+        {
+          "value": "Chimaltenango",
+          "cities": ["Chimaltenango", "Patzún", "San Martín Jilotepeque"]
+        }
+      ]
+    }
+  ]
+  

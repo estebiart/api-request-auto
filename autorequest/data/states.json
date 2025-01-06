@@ -1,0 +1,29 @@
+[
+    {
+        "country_key": "GT",
+        "states": [
+            { "id": 831, "name": "Alta Verapaz" },
+            { "id": 832, "name": "Baja Verapaz" },
+            { "id": 833, "name": "Chimaltenango" },
+            { "id": 834, "name": "Chiquimula" },
+            { "id": 835, "name": "El Progreso" },
+            { "id": 836, "name": "Escuintla" },
+            { "id": 837, "name": "Guatemala" },
+            { "id": 838, "name": "Huehuetenango" },
+            { "id": 839, "name": "Izabal" },
+            { "id": 840, "name": "Jalapa" },
+            { "id": 841, "name": "Jutiapa" },
+            { "id": 842, "name": "Petén" },
+            { "id": 843, "name": "Quetzaltenango" },
+            { "id": 844, "name": "Quiché" },
+            { "id": 845, "name": "Retalhuleu" },
+            { "id": 846, "name": "Sacatepéquez" },
+            { "id": 847, "name": "San Marcos" },
+            { "id": 848, "name": "Santa Rosa" },
+            { "id": 849, "name": "Sololá" },
+            { "id": 850, "name": "Suchitepéquez" },
+            { "id": 851, "name": "Totonicapán" },
+            { "id": 852, "name": "Zacapa" }
+        ]
+    }
+]
